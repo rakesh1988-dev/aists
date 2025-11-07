@@ -136,7 +136,7 @@ function getCurrentISTTime() {
     });
 }
 const TIMEZONE = 'Asia/Kolkata';
-cron.schedule('*/10 * * * *', () => {
+cron.schedule('*/5 * * * *', () => {
     const currentIST = getCurrentISTTime();
     
     if (isWithinTimeRange()) {

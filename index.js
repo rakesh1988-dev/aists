@@ -76,7 +76,10 @@ const calldata = async () => {
 }
 
 function isWithinTimeRange() {
-    const now = new Date();
+    const temp = new Date().toLocaleString("en-IN", {
+  timeZone: "Asia/Kolkata"
+});
+const now = new Date(temp)
     const hours = now.getHours();
     const minutes = now.getMinutes();
     return (hours == 9 && minutes >= 15) || (hours == 10 && minutes <=25);

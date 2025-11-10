@@ -66,15 +66,13 @@ const symbolSchema = new mongoose.Schema({
 });
 const Symbol = mongoose.model('symbol', symbolSchema);
 const calldata = async () => {
-  const result = await Symbol.find().skip(0).limit(30)
-  result.forEach(async(item, index) => {
+  const result = await Symbol.find().skip(0).limit(10)
+  await result.forEach(async(item, index) => {
     const symbol = item['Symbol']
     await scrapeWithCheerio(symbol)
-    if (index == 29) {
-     bulkWrite()
-    }
+    
   })
-  
+  await  bulkWrite()
 }
 
 function isWithinTimeRange() {
